@@ -3,18 +3,23 @@ import React from 'react';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {isClicked: false};
+    this.handler = this.handler.bind(this);
   }
 
   //handler goes here
+  handler() {
+    this.setState(prev => ({
+      isClicked: !prev.isClicked
+    }));
+  }
 
   render() {
     return (
       <div>
-        <p>Greetings!</p>
-        <p>Button goes here</p>
+        <button type="button" onClick={this.handler}>
+          {this.state.isClicked ? 'Thanks!' : 'Click Me'}
+        </button>
       </div>
     );
   }
